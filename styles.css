@@ -1,13 +1,22 @@
-*, *::before,, *::after{
+*, *::before, *::after{
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
+.container{
+    position: absolute;
 
+}
 body {
     padding: 0;
     margin: 0;
     background: linear-gradient(to right, #b134eb, #34e8eb );
+    background-image: url(/images/bgPic.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position:sticky;
+    margin: 5%;
+
 }
 
 .calc-grid {
@@ -24,10 +33,10 @@ body {
     font-size: 2rem;
     border: 1px solid white;
     outline: none;
-    background-color: rgba(255, 255, 255, .75);
+    background-color: rgba(50, 53, 52, 0.75);
 }
 .calc-grid > button:hover{
-    background-color: rgba(255, 255, 255, .9);
+    background-color: rgba(174, 180, 94, 0.9);
 }
 
 .span-two{
@@ -36,7 +45,7 @@ body {
 
 .output{
     grid-column: 1/ -1;
-    background-color: rgba(0, 0, 0, .75);
+    background-color: rgba(126, 176, 145, 0.75);
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
