@@ -1,32 +1,36 @@
+// This is a class for the Calculator / Constructor
 class Calculator{
     constructor(perviousOperandTextElement, currentOperandTextElement){
         this.perviousOperandTextElement = perviousOperandTextElement
         this.currentOperandTextElement = currentOperandTextElement
         this.clear()
 }
-
+// Clear Function
 clear(){
 this.currentOperand = ''
 this.previousOperand = ''
 this.operation = undefined
 }
+// Delete function
 delete(){
-
+this.currentOperand = this.currentOperand.toString().slice(0, -1)
 }
+// Append Number Function
 appendNumber(number){
     if( number === '.' && this.currentOperand.includes('.'))return
 this.currentOperand = this.currentOperand.toString() + number.toString()
 }
-
+// Choose Number function
 chooseOperation(operation){
     if (this.currentOperand === '')return
-    if (this.perviousOperand !=== ''){
+    if (this.perviousOperand !== ''){
         this.compute()
     }
 this.operation = operation
 this.previousOperand = this.currentOperand
 this.currentOperand = ''
 }
+// Compute function / All operations
 compute(){
     let computation
     const prev = parseFloat(this.previousOperand)
@@ -52,13 +56,26 @@ compute(){
     this.operation = undefined
     this.previousOperand = ''
 }
+// Display Number Function
+getDisplayNumber(number){
+    const floatNumber = parseFloat(number)
+    if (isNaN(floatNumber)) return''
+    return floatNumber.toLocalString('en')
+
+    return number
+}
+// Updates Number Function
 updateDisplay(){
 this.currentOperandTextElement.innerText = this.currentOperand
-this.perviousOperandTextElement.innerText = this.perviousOperand
-}
+    if (this.operation != null){
+        this.perviousOperandTextElement.innerText = 
+        `$this.perviousOperand} ${this.operation}`
+    }
 }
 
+}
 
+// Const Variables for all Buttons
 const numberButtons = document.querySelectorAll('[data-number]')
 const operationButtons = document.querySelectorAll('[data-operation]')
 const equalsButtons = document.querySelector('[data-equals]')
@@ -68,27 +85,32 @@ const perviousOperandTextElement = document.querySelector('[data-previous-operan
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
 const calculator = new Calculator(perviousOperandTextElement, currentOperandTextElement)
-
+// Allows the numbers to be clicked and activated 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
     })
 });
-
+// Activates the operations Buttons
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperation(button.innerText)
         calculator.updateDisplay()
     })
 });
-
+// Equals Button 
 equalsButtons.addEventListener('click', button =>{
     calculator.compute()
     calculator.updateDisplay()
 });
-
+// Clear Button 
 allClearButtons.addEventListener('click', button =>{
     calculator.clear()
+    calculator.updateDisplay()
+});
+// Delete Button
+deleteButtons.addEventListener('click', button =>{
+    calculator.delete()
     calculator.updateDisplay()
 });
