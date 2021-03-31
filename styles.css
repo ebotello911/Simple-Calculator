@@ -7,17 +7,14 @@
     position: absolute;
 
 }
-body {
-    padding: 0;
-    margin: 0;
-    background: linear-gradient(to right, #b134eb, #34e8eb );
-    background-image: url(/images/bgPic.png);
+html{ 
+    background: url(./images/bgPic.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-repeat: no-repeat;
-    position:sticky;
-    margin: 5%;
-
-}
+    overflow: hidden;
+  }
 
 .calc-grid {
     display: grid;

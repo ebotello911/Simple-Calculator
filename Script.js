@@ -60,11 +60,11 @@ compute(){
 getDisplayNumber(number){
     const floatNumber = parseFloat(number)
     if (isNaN(floatNumber)) return''
-    return floatNumber.toLocalString('en')
+    return floatNumber.toLocalString('')
 
     return number
 }
-// Updates Number Function
+// Updates Display Function
 updateDisplay(){
 this.currentOperandTextElement.innerText = this.currentOperand
     if (this.operation != null){
